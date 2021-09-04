@@ -6,3 +6,29 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+
+* { 
+    /* reset all html element types with the universal selector first */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* makes border & padding not count towards width or height */
+}
+
+body {
+    /* Apply here rather than universal - more efficient because of inheritance */
+    font-family: "Lato", sans-serif; 
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, #7ed56fc7, #28b485c4),  url(../img/hero.jpg);
+    background-size: cover; /* always try to fit the element within the width */
+    background-position: top; /* pin the top of the image to the top of the element */
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+}
