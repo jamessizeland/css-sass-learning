@@ -54,13 +54,21 @@ body {
 .heading-primary {
     text-transform: uppercase;
     color: #fff;
+
+    backface-visibility: hidden; /* improves transform behaviour if we have no flipping */
 }
 
 .heading-primary-main {
     display: block;
     font-size: 60px;
     font-weight: 400;
-    letter-spacing: 35px;;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; /* https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function */
+    /* animation-iteration-count: 3; */
+    /* animation-delay: 3s; */
 }
 
 .heading-primary-sub {
@@ -68,4 +76,38 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+    /* browers optimized for opacity and transform animations only */
+    0% /*start*/ {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% /*finish*/ {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInRight {
+    /* browers optimized for opacity and transform animations only */
+    0% /*start*/ {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% /*finish*/ {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
