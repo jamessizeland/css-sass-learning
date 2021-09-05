@@ -31,7 +31,7 @@ body {
     background-size: cover; /* always try to fit the element within the width */
     background-position: top; /* pin the top of the image to the top of the element */
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
 .logo-box {
@@ -49,6 +49,7 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%); /* Shift back relative to size of this element (essentially changes the datum */
+    text-align: center; /* nested divs act like text for this */
 }
 
 .heading-primary {
@@ -56,6 +57,7 @@ body {
     color: #fff;
 
     backface-visibility: hidden; /* improves transform behaviour if we have no flipping */
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -111,3 +113,29 @@ body {
         transform: translateX(0);
     }
 }
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* x y blur color */
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* x y blur color */
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
