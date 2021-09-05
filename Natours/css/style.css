@@ -114,6 +114,22 @@ body {
     }
 }
 
+@keyframes moveInBottom {
+    /* browers optimized for opacity and transform animations only */
+    0% /*start*/ {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    80% {
+        transform: translateY(-5px);
+    }
+
+    100% /*finish*/ {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
@@ -122,6 +138,7 @@ body {
     display: inline-block;
     border-radius: 100px;
     transition: all 0.2s;
+    position: relative; /* required so that our child pseudoelements position correctly */
 }
 
 .btn:hover {
@@ -134,8 +151,36 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* x y blur color */
 }
 
+.btn-animated {
+    animation: moveInRight 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards; /* automatically apply the styles of 0% before animated */
+}
+
 .btn-white {
     background-color: #fff;
     color: #777;
 }
 
+.btn::after {
+    /* specify a pseudoelement after all buttons */
+    content: ""; /* must have a content tag, even if its empty */
+    display: inline-block; /* match the button we're mirroring */
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+.btn-white::after {
+    content: "";
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    /* pseudoelement that exists only when the button is hovered */
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
